@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---cache-dev-404-page-js",
+    "path": "/dev-404-page/",
+    "result": {"data":{"allSiteFunction":{"nodes":[]},"allSitePage":{"nodes":[{"path":"/posts/django-setup"},{"path":"/posts/tailwindcss-setup"},{"path":"/posts/typescript-setup"},{"path":"/404/"},{"path":"/404.html"},{"path":"/"}]}},"pageContext":{}},
+    "staticQueryHashes": []}
