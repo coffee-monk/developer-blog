@@ -6,11 +6,13 @@ import PostLink from "../components/post-link"
 
 const IndexPage = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
+  console.log(posts)
+
   return (
     <Layout>
       <div>
         {posts.map(post => (
-          <PostLink post={post} />
+          <PostLink post={post} key={post.id} />
         ))}
       </div>
     </Layout>

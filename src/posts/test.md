@@ -1,7 +1,7 @@
 ---
 title: TailwindCSS Setup
 slug: tailwindcss-setup
-lang: wecss
+lang: css
 date: Dec-20-2021
 ---
 

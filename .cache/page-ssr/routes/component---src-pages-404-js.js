@@ -8868,6 +8868,8 @@ const Footer = () => {
   const today = new Date();
   const date = today.getFullYear() + " " + today.getMonth() + " " + today.getDate();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("footer", {
+    className: "absolute bottom-0 w-full mx-auto max-w-2xl"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex items-center justify-between py-5 mt-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     className: "text-green-sol"
@@ -8876,7 +8878,7 @@ const Footer = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon, {
     className: "text-3xl text-magenta-sol hover:text-blue-sol transition ease-out duration-200",
     icon: _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faGithub
-  })));
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
