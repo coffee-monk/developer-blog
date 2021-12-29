@@ -2521,7 +2521,7 @@ __webpack_require__.r(__webpack_exports__);
 const BlogContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
 const initialState = {
   currentPage: 1,
-  paginatorTotalPages: 1,
+  totalPages: 1,
   theme: "dark"
 };
 
@@ -2530,7 +2530,7 @@ function reducer(state, action) {
     case "INCREMENT":
       {
         return { ...state,
-          currentPage: state.currentPage < state.paginatorTotalPages ? state.currentPage + 1 : state.currentPage
+          currentPage: state.currentPage < state.totalPages ? state.currentPage + 1 : state.currentPage
         };
       }
 
@@ -2544,7 +2544,7 @@ function reducer(state, action) {
     case "TOTAL_PAGES":
       {
         return { ...state,
-          paginatorTotalPages: action.payload
+          totalPages: action.payload
         };
       }
 
