@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-post-template-js",
-    "path": "/posts/test",
-    "result": {"data":{"markdownRemark":{"frontmatter":{"date":"2021-04-01T00:00:00.000Z","slug":"test","title":"test"}}},"pageContext":{"slug":"test"}},
-    "staticQueryHashes": []}
