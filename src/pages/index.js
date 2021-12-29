@@ -1,19 +1,26 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import PostLink from "../components/post-link"
-import Paginator from "../components/paginator"
+
+import { BlogContext } from "../context/BlogContextProvider"
 
 const IndexPage = ({ data }) => {
   const [posts] = useState(data.allMarkdownRemark.nodes)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [postsPerPage] = useState(3)
+  const postsPerPage = 3
 
-  console.log(posts)
+  const { state, dispatch } = useContext(BlogContext)
+
+  useEffect(() => {
+    dispatch({
+      type: "TOTAL_PAGES",
+      payload: Math.ceil(posts.length / postsPerPage),
+    })
+  }, [])
 
   // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage
+  const indexOfLastPost = state.currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
 
@@ -24,7 +31,6 @@ const IndexPage = ({ data }) => {
           <PostLink post={post} key={post.id} />
         ))}
       </div>
-      <Paginator currentPage={currentPage}></Paginator>
     </Layout>
   )
 }

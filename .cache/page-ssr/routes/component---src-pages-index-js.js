@@ -15936,18 +15936,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var gatsby__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gatsby */ "./.cache/gatsby-browser-entry.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_paginator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/paginator */ "./src/components/paginator.js");
 
 
 
-function Header() {
+
+const Header = () => {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("nav", {
     className: "flex flex-wrap items-center justify-between py-5 mb-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h1", {
     className: "text-magenta-sol hover:text-blue-sol transition ease-out duration-200"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(gatsby__WEBPACK_IMPORTED_MODULE_0__.Link, {
     to: "/"
-  }, "DEVBLOG")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "hi"));
-}
+  }, "DEVBLOG")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement(_components_paginator__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("p", null, "TEST"));
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Header);
 
@@ -16001,24 +16003,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _context_BlogContextProvider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/BlogContextProvider */ "./src/context/BlogContextProvider.js");
 
 
 
 
-const Paginator = () => {
+
+function Paginator() {
+  const {
+    state,
+    dispatch
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_BlogContextProvider__WEBPACK_IMPORTED_MODULE_2__.BlogContext);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex flex-wrap items-center justify-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__.faAngleLeft,
-    className: "mx-5 text-xl text-magenta-sol"
+    onClick: () => dispatch({
+      type: "DECREMENT"
+    }),
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faAngleLeft,
+    className: "text-magenta-sol text-xl mx-5 cursor-pointer hover:text-cyan-sol"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     className: "text-green-sol"
-  }, "NUMBER"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__.faAngleRight,
-    className: "text-magenta-sol text-xl mx-5"
+  }, state.currentPage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon, {
+    onClick: () => dispatch({
+      type: "INCREMENT"
+    }),
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faAngleRight,
+    className: "text-magenta-sol text-xl mx-5 cursor-pointer hover:text-cyan-sol"
   }));
-};
+}
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Paginator);
 
@@ -16112,7 +16126,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/layout */ "./src/components/layout.js");
 /* harmony import */ var _components_post_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/post-link */ "./src/components/post-link.js");
-/* harmony import */ var _components_paginator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/paginator */ "./src/components/paginator.js");
+/* harmony import */ var _context_BlogContextProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/BlogContextProvider */ "./src/context/BlogContextProvider.js");
 
 
 
@@ -16124,24 +16138,25 @@ const IndexPage = ({
   const {
     0: posts
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(data.allMarkdownRemark.nodes);
+  const postsPerPage = 3;
   const {
-    0: currentPage,
-    1: setCurrentPage
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1);
-  const {
-    0: postsPerPage
-  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(3);
-  console.log(posts); // Get current posts
+    state,
+    dispatch
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_BlogContextProvider__WEBPACK_IMPORTED_MODULE_3__.BlogContext);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    dispatch({
+      type: "TOTAL_PAGES",
+      payload: Math.ceil(posts.length / postsPerPage)
+    });
+  }, []); // Get current posts
 
-  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfLastPost = state.currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_layout__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, currentPosts.map(post => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_post_link__WEBPACK_IMPORTED_MODULE_2__["default"], {
     post: post,
     key: post.id
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_paginator__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    currentPage: currentPage
-  }));
+  }))));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IndexPage);

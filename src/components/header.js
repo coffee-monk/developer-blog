@@ -1,13 +1,15 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { useContext } from "react"
+import Paginator from "../components/paginator"
 
-function Header() {
+const Header = () => {
   return (
     <nav className="flex flex-wrap items-center justify-between py-5 mb-6">
       <h1 className="text-magenta-sol hover:text-blue-sol transition ease-out duration-200">
         <Link to="/">DEVBLOG</Link>
       </h1>
-      <p>hi</p>
+      <Paginator />
+      <p>TEST</p>
     </nav>
   )
 }

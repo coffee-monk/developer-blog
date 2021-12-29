@@ -1841,6 +1841,12 @@ var plugins = [{
   options: {
     "plugins": []
   }
+}, {
+  name: 'default-site-plugin',
+  plugin: __webpack_require__(/*! ./gatsby-ssr */ "./gatsby-ssr.js"),
+  options: {
+    "plugins": []
+  }
 }];
 /* global plugins */
 // During bootstrap, we write requires at top of this file which looks like:
@@ -2201,6 +2207,24 @@ HTML.propTypes = {
 
 /***/ }),
 
+/***/ "./gatsby-ssr.js":
+/*!***********************!*\
+  !*** ./gatsby-ssr.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+const React = __webpack_require__(/*! react */ "react");
+
+const BlogContextProvider = __webpack_require__(/*! ./src/context/BlogContextProvider */ "./src/context/BlogContextProvider.js")["default"];
+
+exports.wrapRootElement = ({
+  element
+}) => {
+  return /*#__PURE__*/React.createElement(BlogContextProvider, null, element);
+};
+
+/***/ }),
+
 /***/ "./node_modules/gatsby-plugin-google-analytics/gatsby-ssr.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/gatsby-plugin-google-analytics/gatsby-ssr.js ***!
@@ -2476,6 +2500,79 @@ var onRenderBody = function onRenderBody(_ref) {
 };
 
 exports.onRenderBody = onRenderBody;
+
+/***/ }),
+
+/***/ "./src/context/BlogContextProvider.js":
+/*!********************************************!*\
+  !*** ./src/context/BlogContextProvider.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BlogContext": () => (/* binding */ BlogContext),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const BlogContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)();
+const initialState = {
+  currentPage: 1,
+  paginatorTotalPages: 1,
+  theme: "dark"
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      {
+        return { ...state,
+          currentPage: state.currentPage < state.paginatorTotalPages ? state.currentPage + 1 : state.currentPage
+        };
+      }
+
+    case "DECREMENT":
+      {
+        return { ...state,
+          currentPage: state.currentPage > 1 ? state.currentPage - 1 : state.currentPage
+        };
+      }
+
+    case "TOTAL_PAGES":
+      {
+        return { ...state,
+          paginatorTotalPages: action.payload
+        };
+      }
+
+    case "TOGGLE_THEME":
+      {
+        return { ...state,
+          theme: state.theme === "dark" ? "light" : "dark"
+        };
+      }
+  }
+}
+
+const BlogContextProvider = ({
+  children
+}) => {
+  const {
+    0: state,
+    1: dispatch
+  } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(reducer, initialState);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(BlogContext.Provider, {
+    value: {
+      state,
+      dispatch
+    }
+  }, children);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BlogContextProvider);
 
 /***/ }),
 

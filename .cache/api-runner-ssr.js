@@ -14,6 +14,10 @@ var plugins = [{
       name: 'gatsby-plugin-offline',
       plugin: require('/home/acorn/Desktop/WebDev/Node/Gatsby/gatsby-tailwindcss-starter/node_modules/gatsby-plugin-offline/gatsby-ssr'),
       options: {"plugins":[]},
+    },{
+      name: 'default-site-plugin',
+      plugin: require('/home/acorn/Desktop/WebDev/Node/Gatsby/gatsby-tailwindcss-starter/gatsby-ssr'),
+      options: {"plugins":[]},
     }]
 /* global plugins */
 // During bootstrap, we write requires at top of this file which looks like:
