@@ -3,13 +3,20 @@ import React, { createContext, useReducer } from "react"
 export const BlogContext = createContext()
 
 const initialState = {
+  posts: [],
   currentPage: 1,
   totalPages: 1,
-  theme: "dark",
+  postsPerPage: 3,
 }
 
 function reducer(state, action) {
   switch (action.type) {
+    case "SET_POSTS": {
+      return {
+        ...state,
+        posts: action.payload,
+      }
+    }
     case "INCREMENT": {
       return {
         ...state,
@@ -26,16 +33,10 @@ function reducer(state, action) {
           state.currentPage > 1 ? state.currentPage - 1 : state.currentPage,
       }
     }
-    case "TOTAL_PAGES": {
+    case "PAGINATOR_TOTAL": {
       return {
         ...state,
         totalPages: action.payload,
-      }
-    }
-    case "TOGGLE_THEME": {
-      return {
-        ...state,
-        theme: state.theme === "dark" ? "light" : "dark",
       }
     }
   }
