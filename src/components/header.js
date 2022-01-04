@@ -1,15 +1,16 @@
 import { Link } from "gatsby"
-import React, { useContext } from "react"
-import Paginator from "../components/paginator"
+import React from "react"
+import Paginator from "./paginator"
+import SearchBar from "./searchBar"
 
 const Header = () => {
   return (
-    <nav className="flex flex-wrap items-center justify-between py-5 mb-6">
+    <nav className="grid grid-cols-3 items-center py-5 mb-6">
       <h1 className="text-magenta-sol hover:text-blue-sol transition ease-out duration-200">
         <Link to="/">DEVBLOG</Link>
       </h1>
       <Paginator />
-      <p>TEST</p>
+      <SearchBar />
     </nav>
   )
 }

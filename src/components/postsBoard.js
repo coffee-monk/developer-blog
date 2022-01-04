@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 
 import { BlogContext } from "../context/BlogContextProvider"
 
@@ -6,13 +6,20 @@ import PostLink from "./postLink"
 
 const Posts = () => {
   const { state } = useContext(BlogContext)
+  const { posts, filteredPosts, currentPage, postsPerPage } = state
 
-  const { posts, currentPage, postsPerPage } = state
-
-  // Get current posts
+  // Get list of posts per pagination
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
+  let currentPosts
+
+  if (filteredPosts.length === 0) {
+    currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
+  } else {
+    currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost)
+  }
+
+  console.log(currentPosts)
 
   return (
     <>

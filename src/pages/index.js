@@ -2,12 +2,13 @@ import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import Posts from "../components/posts"
+import PostsBoard from "../components/postsBoard"
 
 import { BlogContext } from "../context/BlogContextProvider"
 
 const IndexPage = ({ data }) => {
   const { state, dispatch } = useContext(BlogContext)
+  const { posts, filteredPosts, postsPerPage } = state
 
   // set posts in context API
   useEffect(() => {
@@ -17,17 +18,20 @@ const IndexPage = ({ data }) => {
     })
   }, [])
 
-  // update posts per page if state.posts changes
+  // update posts per page if posts/filteredPosts changes
   useEffect(() => {
     dispatch({
-      type: "PAGINATOR_TOTAL",
-      payload: Math.ceil(state.posts.length / state.postsPerPage),
+      type: "PAGINATOR_MAX",
+      payload:
+        filteredPosts.length === 0
+          ? Math.ceil(posts.length / postsPerPage)
+          : Math.ceil(filteredPosts.length / postsPerPage),
     })
-  }, [state.posts])
+  }, [posts, filteredPosts])
 
   return (
     <Layout>
-      <Posts />
+      <PostsBoard />
     </Layout>
   )
 }

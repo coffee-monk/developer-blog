@@ -4,9 +4,11 @@ export const BlogContext = createContext()
 
 const initialState = {
   posts: [],
+  filteredPosts: [],
   currentPage: 1,
   totalPages: 1,
   postsPerPage: 3,
+  searchBarValue: "",
 }
 
 function reducer(state, action) {
@@ -15,6 +17,12 @@ function reducer(state, action) {
       return {
         ...state,
         posts: action.payload,
+      }
+    }
+    case "SET_FILTERED_POSTS": {
+      return {
+        ...state,
+        filteredPosts: action.payload,
       }
     }
     case "INCREMENT": {
@@ -33,7 +41,7 @@ function reducer(state, action) {
           state.currentPage > 1 ? state.currentPage - 1 : state.currentPage,
       }
     }
-    case "PAGINATOR_TOTAL": {
+    case "PAGINATOR_MAX": {
       return {
         ...state,
         totalPages: action.payload,
