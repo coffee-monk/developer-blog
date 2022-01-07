@@ -9,6 +9,7 @@ const initialState = {
   totalPages: 1,
   postsPerPage: 3,
   searchBarValue: "",
+  languageFilter: [],
 }
 
 function reducer(state, action) {
@@ -45,6 +46,12 @@ function reducer(state, action) {
       return {
         ...state,
         totalPages: action.payload,
+      }
+    }
+    case "SET_LANGUAGE_FILTER": {
+      return {
+        ...state,
+        languageFilter: action.payload,
       }
     }
   }

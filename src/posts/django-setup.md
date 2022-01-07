@@ -1,7 +1,7 @@
 ---
 title: Django Setup
 slug: django-setup
-lang: python
+language: Python
 date: 2021-05-25
 ---
 

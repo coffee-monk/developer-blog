@@ -1,7 +1,7 @@
 ---
 title: Typescript Setup
 slug: typescript-setup
-lang: javascript
+language: Javascript
 date: 2018-06-14
 ---
 

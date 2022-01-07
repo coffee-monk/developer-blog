@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => {
     })
   }, [])
 
-  // update posts per page if posts/filteredPosts changes
+  // update pagination pages if posts/filteredPosts changes
   useEffect(() => {
     dispatch({
       type: "PAGINATOR_MAX",
@@ -46,7 +46,7 @@ export const query = graphql`
           date
           slug
           title
-          lang
+          language
         }
         id
       }

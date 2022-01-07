@@ -11,25 +11,21 @@ import {
 import { faFileAlt } from "@fortawesome/free-solid-svg-icons"
 
 const PostLink = ({ post }) => {
-  const slug = post.frontmatter.slug
-  const title = post.frontmatter.title
-  const date = post.frontmatter.date
-  const lang = post.frontmatter.lang
+  const { slug, title, date, language } = post.frontmatter
   const id = post.id
 
-  //
   let icon
-  switch (lang) {
-    case "python":
+  switch (language) {
+    case "Python":
       icon = faPython
       break
-    case "javascript":
+    case "Javascript":
       icon = faJs
       break
-    case "css":
+    case "CSS":
       icon = faCss3Alt
       break
-    case "node":
+    case "Node":
       icon = faNodeJs
       break
     default:
