@@ -1,4 +1,5 @@
 import { Link } from "gatsby"
+
 import React from "react"
 import Paginator from "./paginator"
 import SearchBar from "./searchBar"

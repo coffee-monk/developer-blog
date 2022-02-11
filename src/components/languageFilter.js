@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import { BlogContext } from "../context/BlogContextProvider"
 import { graphql, useStaticQuery } from "gatsby"
+import { useLocation } from "@reach/router"
 
 const LanguageFilter = () => {
   const { site } = useStaticQuery(
@@ -20,6 +21,8 @@ const LanguageFilter = () => {
 
   const [dropdown, setDropdown] = useState(false)
   const [selectedLanguages, setSelectedLanguage] = useState([])
+
+  const location = useLocation()
 
   function dropdownToggle() {
     setDropdown(!dropdown)
@@ -47,18 +50,24 @@ const LanguageFilter = () => {
     })
   }, [selectedLanguages])
 
-  let dropdownColor = dropdown ? "text-green-sol" : "text-magenta-sol"
-
   return (
     <div className="relative text-magenta-sol">
       <h2
         onClick={dropdownToggle}
-        className={`${dropdownColor} cursor-pointer hover:text-blue-sol transition ease-out duration-200`}
+        className={`
+          ${
+            location.pathname === "/"
+              ? "pointer-events-auto text-magenta-sol"
+              : "pointer-events-none text-green-sol"
+          }
+          ${
+            dropdown ? "text-blue-sol" : "text-magenta-sol"
+          } cursor-pointer hover:text-blue-sol transition ease-out duration-200`}
       >
         Language
       </h2>
       {dropdown && (
-        <ul className="absolute bottom-10 bg-base-03">
+        <ul className="absolute bottom-10 bg-base-03 border-2 rounded-md border-blue-sol">
           {languages.map(language => {
             return (
               <li
@@ -68,7 +77,7 @@ const LanguageFilter = () => {
                   selectedLanguages.includes(language)
                     ? "text-cyan-sol"
                     : "text-magenta-sol"
-                } py-4 font-bold cursor-pointer hover:text-cyan-sol`}
+                } p-4 font-bold cursor-pointer hover:text-cyan-sol`}
                 key={language}
               >
                 {language}
