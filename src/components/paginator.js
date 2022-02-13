@@ -8,6 +8,8 @@ import { BlogContext } from "../context/BlogContextProvider"
 
 function Paginator() {
   const { state, dispatch } = useContext(BlogContext)
+  const { totalPages, currentPage } = state
+
   const location = useLocation()
 
   return (
@@ -17,7 +19,9 @@ function Paginator() {
         icon={faAngleLeft}
         className={`${
           location.pathname === "/"
-            ? "text-magenta-sol pointer-events-auto"
+            ? currentPage === 1
+              ? "text-green-sol pointer-events-none"
+              : "text-magenta-sol pointer-events-auto"
             : "text-green-sol pointer-events-none"
         } text-xl mx-5 cursor-pointer hover:text-cyan-sol transition ease-out duration-100`}
       />
@@ -29,7 +33,9 @@ function Paginator() {
         icon={faAngleRight}
         className={`${
           location.pathname === "/"
-            ? "text-magenta-sol pointer-events-auto"
+            ? currentPage === totalPages
+              ? "text-green-sol pointer-events-none"
+              : "text-magenta-sol pointer-events-auto"
             : "text-green-sol pointer-events-none"
         } text-xl mx-5 cursor-pointer hover:text-cyan-sol transition ease-out duration-100`}
       />

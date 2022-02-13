@@ -10,6 +10,21 @@ const IndexPage = ({ data }) => {
   const { state, dispatch } = useContext(BlogContext)
   const { posts, filteredPosts, postsPerPage } = state
 
+  // Format query data of posts array, then sort by date
+  const queryData2Posts = data.allMarkdownRemark.nodes
+    .map(post => {
+      const filteredPostObj = {
+        language: post.frontmatter.language,
+        slug: post.frontmatter.slug,
+        title: post.frontmatter.title,
+        date: new Date(post.frontmatter.date),
+      }
+      return filteredPostObj
+    })
+    .sort((a, b) => b.date - a.date)
+
+  console.log(queryData2Posts)
+
   // set posts in context API
   useEffect(() => {
     dispatch({

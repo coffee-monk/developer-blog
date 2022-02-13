@@ -35,7 +35,7 @@ const SearchBar = () => {
         name="search"
         placeholder="Search"
         onChange={updateSearchPosts}
-        className={`px-3 py-2 pl-10 w-full text-blue-sol text-sm bg-transparent ${
+        className={`px-3 py-2 pl-10 w-full text-cyan-sol text-sm bg-transparent ${
           location.pathname === "/"
             ? "placeholder-magenta-sol border-magenta-sol pointer-events-auto"
             : "placeholder-green-sol border-green-sol pointer-events-none"

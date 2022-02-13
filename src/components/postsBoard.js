@@ -31,9 +31,6 @@ const Posts = () => {
     currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost)
   }
 
-  console.log(currentPosts)
-  console.log(languageFilter)
-
   return (
     <>
       {currentPosts.map(post => (

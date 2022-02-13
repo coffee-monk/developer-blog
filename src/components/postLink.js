@@ -14,6 +14,13 @@ const PostLink = ({ post }) => {
   const { slug, title, date, language } = post.frontmatter
   const id = post.id
 
+  // const dateString = new Date(date).toLocaleDateString("en-US", {
+  //   year: "numeric",
+  //   month: "long",
+  //   day: "numeric",
+  //   timeZone: "UTC",
+  // })
+
   let icon
   switch (language) {
     case "Python":
