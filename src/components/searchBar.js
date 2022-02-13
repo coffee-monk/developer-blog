@@ -12,9 +12,7 @@ const SearchBar = () => {
 
   const updateSearchPosts = event => {
     const filteredPosts = posts.filter(post => {
-      return post.frontmatter.title
-        .toLowerCase()
-        .includes(event.target.value.toLowerCase())
+      return post.title.toLowerCase().includes(event.target.value.toLowerCase())
     })
     dispatch({
       type: "SET_FILTERED_POSTS",

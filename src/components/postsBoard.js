@@ -17,13 +17,11 @@ const Posts = () => {
   // apply filters and pagination
   if (filteredPosts.length === 0 && languageFilter.length > 0) {
     currentPosts = posts
-      .filter(post => languageFilter.includes(post.frontmatter.language))
+      .filter(post => languageFilter.includes(post.language))
       .slice(indexOfFirstPost, indexOfLastPost)
   } else if (filteredPosts.length > 0 && languageFilter.length > 0) {
     currentPosts = filteredPosts
-      .filter(filteredPost =>
-        languageFilter.includes(filteredPost.frontmatter.language)
-      )
+      .filter(filteredPost => languageFilter.includes(filteredPost.language))
       .slice(indexOfFirstPost, indexOfLastPost)
   } else if (filteredPosts.length === 0) {
     currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)

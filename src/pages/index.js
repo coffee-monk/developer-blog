@@ -17,6 +17,7 @@ const IndexPage = ({ data }) => {
         language: post.frontmatter.language,
         slug: post.frontmatter.slug,
         title: post.frontmatter.title,
+        id: post.id,
         date: new Date(post.frontmatter.date),
       }
       return filteredPostObj
@@ -29,7 +30,7 @@ const IndexPage = ({ data }) => {
   useEffect(() => {
     dispatch({
       type: "SET_POSTS",
-      payload: data.allMarkdownRemark.nodes,
+      payload: queryData2Posts,
     })
   }, [])
 
