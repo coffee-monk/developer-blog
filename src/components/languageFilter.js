@@ -75,9 +75,9 @@ const LanguageFilter = () => {
                 id={language}
                 className={`${
                   selectedLanguages.includes(language)
-                    ? "text-cyan-sol"
+                    ? "text-blue-sol"
                     : "text-magenta-sol"
-                } p-4 font-bold cursor-pointer hover:text-cyan-sol`}
+                } p-4 font-bold cursor-pointer hover:text-blue-sol`}
                 key={language}
               >
                 {language}

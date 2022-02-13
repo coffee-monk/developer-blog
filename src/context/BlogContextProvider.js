@@ -7,7 +7,7 @@ const initialState = {
   filteredPosts: [],
   currentPage: 1,
   totalPages: 1,
-  postsPerPage: 10,
+  postsPerPage: 2,
   searchBarValue: "",
   languageFilter: [],
 }

@@ -11,7 +11,7 @@ const Footer = () => {
   console.log(location.pathname)
 
   return (
-    <footer className="fixed bg-base-03 bottom-0 w-full mx-auto max-w-2xl">
+    <footer className="fixed bg-base-02 bottom-0 w-full mx-auto max-w-2xl">
       <div className="flex items-center justify-between py-5 mt-6">
         <LanguageFilter />
         <a href="https://github.com/coffee-monk">

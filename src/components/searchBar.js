@@ -35,11 +35,11 @@ const SearchBar = () => {
         name="search"
         placeholder="Search"
         onChange={updateSearchPosts}
-        className={`px-3 py-2 pl-10 w-full text-cyan-sol text-sm bg-transparent ${
+        className={`px-3 py-2 pl-10 w-full text-blue-sol text-sm bg-transparent ${
           location.pathname === "/"
             ? "placeholder-magenta-sol border-magenta-sol pointer-events-auto"
             : "placeholder-green-sol border-green-sol pointer-events-none"
-        } rounded-lg border-2 border-base-02 border-magenta-sol hover:border-blue-sol focus:border-cyan-sol focus:outline-none focus:placeholder-transparent transition ease-out duration-200`}
+        } rounded-lg border-2 border-base-02 border-magenta-sol hover:border-blue-sol focus:border-blue-sol focus:outline-none focus:placeholder-transparent transition ease-out duration-200`}
       />
     </div>
   )

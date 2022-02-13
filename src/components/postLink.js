@@ -36,7 +36,7 @@ const PostLink = ({ post }) => {
   return (
     <>
       <Link to={"/posts/" + slug} key={id}>
-        <div className="flex items-center justify-between border-base-02 border-2 rounded-lg p-2 my-2 hover:border-green-sol hover:text-cyan-sol transition ease-out duration-100">
+        <div className="flex items-center justify-between border-base-01 border-2 rounded-lg p-2 my-2 hover:border-green-sol hover:text-cyan-sol transition ease-out duration-100">
           <div>
             <h3>{title}</h3>
             <p className="text-base-01">{date}</p>
